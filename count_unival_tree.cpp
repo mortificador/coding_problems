@@ -85,18 +85,44 @@ auto count_unival(Node *root) -> int {
 
 int main() {
   {
+/*
+   0
+*/
     auto root = Node(0);
     assert(count_unival(&root) == 1);
   }
   {
+/*
+     0
+    / 
+   1  
+  / \
+ 1   1
+*/
     auto root = Node(0, new Node(1, new Node(1), new Node(1)));
     assert(count_unival(&root) == 3);
   }
   {
+/*
+   0
+  / \
+ 1   0
+    / \
+   1   0
+  / \
+ 1   1
+*/
     auto root = Node(0, new Node(1), new Node(0, new Node(1, new Node(1), new Node(1)), new Node(0)));
     assert(count_unival(&root) == 5);
   }
   {
+/*
+     0
+    / 
+   0
+  / \
+ 0   0
+*/
     auto root = Node(0, new Node(0, new Node(0), new Node(0)));
     assert(count_unival(&root) == 4);
   }
