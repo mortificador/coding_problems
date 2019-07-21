@@ -93,7 +93,7 @@ int main() {
   }
   {
     vector<int> v{-5, -1, -1, -5, -1};
-    assert(max_sum(v) == -1);
+    assert(max_sum(v) == 0);
   }
   {
     vector<int> v{5, -1, 1, -5, 9};
