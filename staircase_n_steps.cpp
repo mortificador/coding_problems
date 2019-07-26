@@ -55,11 +55,13 @@ int count_ways_to_climb(int stair_steps,
                   vector<int> const& possible_steps,
                   unordered_map<int, int>& ways_seen) {
   int n_ways = 0;
-
+  
+  // We have found a valid way to climb up, as there are exactly 0 steps left.
   if (stair_steps == 0) {
     return 1;
   }
 
+  // This way is not valid, as we end up climbing past the stair
   if (stair_steps < 0) {
     return 0;
   }
