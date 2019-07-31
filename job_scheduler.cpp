@@ -7,6 +7,7 @@ This question requires to use std::threads. Given that we only need to run a fun
 only one method: this method creates a thread that will sleep for the given time, and then execute the function. We save the thread in an internal
 vector, and in the dtor of the scheduler, we wait for all threads to finish. It's important to make the scheduler non-copyable: if it wasn't and
 it was copied, we would end up calling join() on the same thread multiple times, and that would throw an exception (in a dtor!).
+
 To compile this exercise using g++ we need to add -lpthread to the compile command line.
 */
 
