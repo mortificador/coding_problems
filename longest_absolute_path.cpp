@@ -135,7 +135,8 @@ using namespace std;
 
 // This function returns the name of the next directory or filename from the string s, starting at index start_index.
 // It also returns the index of s where the name finishes
-tuple<string, size_t> read_name(string const& s, size_t start_index) {
+tuple<string, size_t> 
+read_name(string const& s, size_t start_index) {
   string name;
   while (start_index < s.size() && s[start_index] != '\n' && s[start_index] != '\t') {
     name.push_back(s[start_index]);
@@ -147,7 +148,8 @@ tuple<string, size_t> read_name(string const& s, size_t start_index) {
 
 // This function reads the depth of the next directory or filename, where the depth is the sum of the number of characters \n and \t read
 // It returns the depth and also the index where the next name starts.
-tuple<int, size_t> read_depth(string const& s, size_t start_index) {
+tuple<int, size_t> 
+read_depth(string const& s, size_t start_index) {
   int depth = 0;
   while (s[start_index] == '\n' || s[start_index] == '\t') {
     depth++;
