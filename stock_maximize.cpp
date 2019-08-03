@@ -24,30 +24,30 @@ For every price at index i, we look in max_after[i+1]
   max_after[i+1] is the largest price in prices[i] that we can find after the element i, so, if max_after[i+1] is larger than prices[i], the maximum
   profit that we can make is (max_after[i+1] - prices[i]). If prices[i] is larger, then no profit can be made (we should not buy).
 
-How can we build max_after? We can iterate through prices in reverse order (starting from the end), and saving in max_until the max. value seen so far:
+How can we build max_after? We can iterate through prices in reverse order (starting from the end), and saving in max_after the max. value seen so far:
 
 E.g:
 prices = [1, 2, 100, 5, 9]
-We start from the end, and save in in max_until[i] the max seen so far:
+We start from the end, and save in in max_after[i] the max seen so far:
 i = 4
 max_so_far = 9
-max_until[4] = 9
+max_after[4] = 9
 
 i = 3
 max_so_far = 9
-max_until[3] = 9
+max_after[3] = 9
 
 i = 2
 max_so_far = 100
-max_until[2] = 100
+max_after[2] = 100
 
 i = 1
 max_so_far = 100
-max_until[1] = 100
+max_after[1] = 100
 
 i = 0
 max_so_far = 100
-max_until[0] = 100
+max_after[0] = 100
 
 Finally: max_after = [100, 100, 100, 9, 9]
 
@@ -91,7 +91,7 @@ We finish (we will never buy the last element, so we don't consider it) and retu
 using namespace std;
 
 uint64_t max_profit(vector<int> const& prices) {
-  // max_until is an array that, at every index, it saves the maximum value
+  // max_after is an array that, at every index, it saves the maximum value
   // in prices that you can find past that index
   vector<int> max_after;
   max_after.resize(prices.size());
@@ -104,9 +104,9 @@ uint64_t max_profit(vector<int> const& prices) {
   }
 
   uint64_t profit = 0;
-  // If, for a given prices, max_until[i+1] is larger (meaning that, at some point in prices,
+  // If, for a given prices, max_after[i+1] is larger (meaning that, at some point in prices,
   // we will find a price larger than the current prices[i]) then add the profit (simulate that we
-  // buy the stock now and sell it when we arrive to the price in max_until[i+1]
+  // buy the stock now and sell it when we arrive to the price in max_after[i+1]
   for (int i = 0; i < prices.size() - 1; i++) {
     if (prices[i] < max_after[i + 1]) {
       profit += (max_after[i + 1] - prices[i]);
