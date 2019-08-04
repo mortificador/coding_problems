@@ -53,7 +53,7 @@ As we said, it's built following a depth-first approach. We know that file.ext i
 
 In order to count the longest absolute path, we can do the following:
 Keep track of the current absolute path, as a vector or a stack of subdirs (e.g.: for the path dir/subdir1/subsubdir2 the current absolute path would contain:
-{dir, subdir1, subsubdir2})
+curr_abs_path = {dir, subdir1, subsubdir2})
 Read the root, and add it to curr_abs_path. Update also the current length of the current absolute path.
  While we haven't read the full string:
   Read the next depth (we call depth to the number of \n and \t). Read the name corresponding to that depth (e.g: "dir\n\tsubdir1", if already read "dir", then
